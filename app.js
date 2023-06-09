@@ -3,10 +3,10 @@ const app = express();
 const morgan = require('morgan');
 const { db, Page, User } = require('./models');
 const wikiRouter = require('./routes/wiki');
-const userRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 
-app.use('routes/wiki', wikiRouter);
-app.use('routes/users', userRouter);
+app.use('/wiki', wikiRouter); 
+app.use('/users', usersRouter);
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/stylesheets'));
@@ -15,7 +15,6 @@ db.authenticate()
   .then(() => { 
     console.log('connected to the database'); 
 })
-
 
 app.get('/', async (req, res) => {
    try {
@@ -33,6 +32,10 @@ app.get('/', async (req, res) => {
     next(e)
   }  
 })
+
+app.get('/', (req, res, next) =>{
+  res.redirect('/wiki');
+});
 
 const init = async () => {
   await db.sync({force: true});

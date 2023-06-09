@@ -1,19 +1,23 @@
-const wikiRouter = require('./routes/wiki');
-const userRouter = require('./routes/users');
+// const wikiRouter = require('./wiki');
+// const userRouter = require('./routes/users');
 
+const express = require('express');
 
-router.get('/', (req, res, next) => {
+const wikiRouter = express.Router();
+
+wikiRouter.get('/', (req, res, next) => {
     res.send('got to GET /wiki/');
   });
   
-  router.post('/', (req, res, next) => {
+  wikiRouter.post('/', (req, res, next) => {
     res.send('got to POST /wiki/');
   });
   
-  router.get('/add', (req, res, next) => {
+  wikiRouter.get('/add', (req, res, next) => {
     res.send('got to GET /wiki/add');
   });
 
 
-app.use('/wiki', wikiRouter);
+// wikiRouter.use('/wiki', router);
 
+module.exports = wikiRouter
