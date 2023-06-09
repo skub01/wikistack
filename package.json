@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pg": "^8.11.0",
+    "sequelize": "^6.32.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
